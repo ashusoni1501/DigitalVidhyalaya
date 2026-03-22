@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DigitalVidhyalaya</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+<style>
+body { font-family: 'Noto Sans Devanagari', sans-serif; }
+</style>
+</head>
+<body class="bg-[#F8FAFC] text-[#475569]">
+
+<!-- Top Bar -->
+<div class="bg-white border-b px-6 py-2 flex justify-between items-center">
+  <div class="flex items-center gap-2">
+    <img src="https://img.icons8.com/color/48/india.png" class="w-5 h-5" />
+    <span class="text-xs font-bold text-slate-500">IITians Initiative</span>
+  </div>
+  <button onclick="toggleLang()" id="langBtn" class="text-xs border px-3 py-1">हिंदी</button>
+</div>
+
+<!-- Navbar -->
+<div class="bg-white px-6 py-4 shadow-sm flex justify-between sticky top-0">
+  <h1 class="font-bold text-[#0B3C5D] text-xl">DigitalVidhyalaya</h1>
+  <a href="#form" id="ctaNav" class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded text-sm">Contact</a>
+</div>
+
+<!-- Hero -->
+<div class="bg-gradient-to-br from-white to-blue-50 text-center px-6 py-20">
+  <h2 id="title" class="text-3xl md:text-5xl font-bold text-[#0F172A] mb-4"></h2>
+  <p id="subtitle" class="text-[#475569] mb-6 max-w-2xl mx-auto"></p>
+  <div class="text-sm text-slate-500 mb-8" id="points"></div>
+  <a href="#form" id="ctaHero" class="bg-orange-500 hover:bg-orange-600 text-white px-10 py-4 rounded font-bold shadow-lg"></a>
+</div>
+
+<!-- Trust -->
+<div class="py-6 text-center text-sm bg-[#F1F5F9] text-slate-600">
+  ✔ IIT Engineers Built &nbsp; ✔ Secure & Reliable &nbsp; ✔ Works in Low Internet &nbsp; ✔ Scalable for All Schools
+</div>
+
+<!-- Features -->
+<div id="features" class="py-16 px-6 max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+<!-- Form -->
+<div id="form" class="py-20 px-6">
+  <div class="max-w-md mx-auto bg-white p-8 shadow-lg rounded">
+    <h2 id="formTitle" class="text-xl font-bold text-center text-[#0B3C5D] mb-2"></h2>
+    <p id="formDesc" class="text-center text-sm text-slate-500 mb-6"></p>
+
+    <form action="https://formsubmit.co/ashutoshsoni1199@gmail.com" method="POST" class="space-y-4">
+      <input type="hidden" name="_subject" value="New School Demo Request">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+
+      <input name="School" type="text" class="w-full p-3 border rounded" required />
+      <input name="Name" type="text" class="w-full p-3 border rounded" required />
+      <input name="Phone" type="tel" class="w-full p-3 border rounded" required />
+
+      <button type="submit" id="submitBtn" class="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 font-bold rounded"></button>
+    </form>
+  </div>
+</div>
+
+<!-- WhatsApp Floating -->
+<a id="waBtn" target="_blank" class="fixed bottom-6 right-6">
+  <div class="bg-[#25D366] p-4 rounded-full shadow-lg hover:scale-105 transition">
+    <img src="https://img.icons8.com/ios-filled/24/ffffff/whatsapp.png" />
+  </div>
+</a>
+
+<!-- Footer -->
+<div class="bg-white text-center py-6 text-xs text-slate-500">
+  DigitalVidhyalaya © 2026
+</div>
+
+<script>
+let lang = "en";
+
+const content = {
+  en: {
+    title: "Run Your Entire School Digitally",
+    subtitle: "Manage Attendance, Fees, Results & Certificates from one system.",
+    points: "✔ Save 2-3 hours daily ✔ Improve Fee Collection ✔ No Paperwork",
+    cta: "Get Free Demo",
+    formTitle: "Book Free Demo",
+    formDesc: "We will contact you on WhatsApp.",
+    placeholders: ["School Name", "Your Name", "WhatsApp Number"],
+    submit: "Submit",
+    waMsg: "Hi, I am interested in DigitalVidhyalaya demo",
+    features: [
+      { title: "Attendance", desc: "• 30 sec me poori class attendance\\n• Manual + RFID support\\n• Parents ko instant WhatsApp alert" },
+      { title: "Fees", desc: "• Pending fees auto track\\n• Defaulter list ready\\n• Reminder WhatsApp/SMS" },
+      { title: "Results", desc: "• Automatic marksheet generation\\n• Unit test & exam reports\\n• Student-wise performance" },
+      { title: "Certificates", desc: "• ID card bulk generation\\n• TC / CC instantly\\n• Admit card auto create" },
+      { title: "UDISE", desc: "• Govt format ready data\\n• One-click export\\n• Error-free reporting" },
+      { title: "Notifications", desc: "• WhatsApp alerts\\n• Important announcements\\n• Fee & attendance updates" }
+    ]
+  },
+  hi: {
+    title: "पूरा स्कूल अब मोबाइल से चलाएं",
+    subtitle: "अटेंडेंस, फीस और रिजल्ट एक ही सिस्टम में",
+    points: "✔ रोज 2-3 घंटे बचाएं ✔ फीस रिकवरी बढ़ाएं ✔ कागज खत्म",
+    cta: "फ्री डेमो लें",
+    formTitle: "मुफ्त डेमो बुक करें",
+    formDesc: "हम WhatsApp पर संपर्क करेंगे",
+    placeholders: ["स्कूल नाम", "आपका नाम", "WhatsApp नंबर"],
+    submit: "भेजें",
+    waMsg: "नमस्ते, मुझे DigitalVidhyalaya में रुचि है",
+    features: [
+      { title: "अटेंडेंस", desc: "• 30 सेकंड में पूरी क्लास की अटेंडेंस\n• मैनुअल + RFID सपोर्ट\n• माता-पिता को तुरंत WhatsApp अलर्ट" },
+      { title: "फीस", desc: "• बकाया फीस का ऑटो ट्रैक\n• डिफॉल्टर लिस्ट तैयार\n• WhatsApp/SMS रिमाइंडर" },
+      { title: "रिजल्ट", desc: "• ऑटोमैटिक मार्कशीट जनरेशन\n• यूनिट टेस्ट और एग्जाम रिपोर्ट\n• छात्र-वार प्रदर्शन विश्लेषण" },
+      { title: "सर्टिफिकेट", desc: "• ID कार्ड बल्क में बनाएं\n• TC / CC तुरंत जनरेट\n• एडमिट कार्ड ऑटो क्रिएट" },
+      { title: "UDISE", desc: "• सरकारी फॉर्मेट में तैयार डेटा\n• एक क्लिक में एक्सपोर्ट\n• बिना गलती के रिपोर्टिंग" },
+      { title: "नोटिफिकेशन", desc: "• WhatsApp अलर्ट\n• महत्वपूर्ण घोषणाएं\n• फीस और अटेंडेंस अपडेट" }
+    ]
+  }
+};
+
+function render() {
+  const t = content[lang];
+
+  title.innerText = t.title;
+  subtitle.innerText = t.subtitle;
+  points.innerText = t.points;
+  ctaHero.innerText = t.cta;
+  ctaNav.innerText = t.cta;
+  formTitle.innerText = t.formTitle;
+  formDesc.innerText = t.formDesc;
+  submitBtn.innerText = t.submit;
+
+  const inputs = document.querySelectorAll("#form input[type=text], #form input[type=tel]");
+  inputs.forEach((i, idx) => i.placeholder = t.placeholders[idx]);
+
+  const f = document.getElementById("features");
+  f.innerHTML = "";
+
+  t.features.forEach(x => {
+    f.innerHTML += `
+      <div class='bg-white p-6 shadow-md rounded border-t-4 border-[#0B3C5D]'>
+        <h3 class='font-bold mb-2 text-[#0F172A]'>${x.title}</h3>
+        <p class='text-sm text-slate-600'>${x.desc.replace(/\\n|\n/g, "<br>")}</p>
+      </div>
+    `;
+  });
+
+  document.getElementById("waBtn").href =
+    `https://wa.me/919118933288?text=${encodeURIComponent(t.waMsg)}`;
+}
+
+function toggleLang() {
+  lang = lang === "en" ? "hi" : "en";
+  langBtn.innerText = lang === "en" ? "हिंदी" : "English";
+  render();
+}
+
+window.onload = render;
+</script>
+
+</body>
+</html>
