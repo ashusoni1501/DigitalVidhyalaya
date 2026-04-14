@@ -1,7 +1,7 @@
 package com.digitalvidhyalaya.tenant.dto;
 
 import com.digitalvidhyalaya.common.enums.SchoolStatus;
-import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
 
 public record SchoolResponse(
         Long id,
@@ -18,7 +18,7 @@ public record SchoolResponse(
         String pincode,
         String primaryPhone,
         String primaryEmail,
-        OffsetDateTime createdAt,
-        OffsetDateTime updatedAt
+        LocalDateTime createdAt,
+        LocalDateTime updatedAt
 ) {
 }

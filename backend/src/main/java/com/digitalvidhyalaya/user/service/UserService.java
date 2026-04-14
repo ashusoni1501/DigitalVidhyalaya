@@ -15,7 +15,7 @@ import com.digitalvidhyalaya.user.entity.UserSchoolRole;
 import com.digitalvidhyalaya.user.repository.RoleRepository;
 import com.digitalvidhyalaya.user.repository.UserRepository;
 import com.digitalvidhyalaya.user.repository.UserSchoolRoleRepository;
-import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -107,7 +107,7 @@ public class UserService {
             mapping.setSchool(school);
             mapping.setRole(role);
             mapping.setStatus(RecordStatus.ACTIVE);
-            mapping.setAssignedAt(OffsetDateTime.now());
+            mapping.setAssignedAt(LocalDateTime.now());
             mapping.setAssignedBy("system");
             userSchoolRoleRepository.save(mapping);
         }

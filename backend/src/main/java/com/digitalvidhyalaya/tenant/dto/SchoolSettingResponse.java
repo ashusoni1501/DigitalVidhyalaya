@@ -1,6 +1,6 @@
 package com.digitalvidhyalaya.tenant.dto;
 
-import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
 
 public record SchoolSettingResponse(
         Long id,
@@ -12,7 +12,7 @@ public record SchoolSettingResponse(
         String receiptPrefix,
         String admissionPrefix,
         String defaultCountry,
-        OffsetDateTime createdAt,
-        OffsetDateTime updatedAt
+        LocalDateTime createdAt,
+        LocalDateTime updatedAt
 ) {
 }

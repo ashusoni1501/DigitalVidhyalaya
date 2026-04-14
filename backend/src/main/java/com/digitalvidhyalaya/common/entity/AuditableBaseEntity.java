@@ -2,7 +2,7 @@ package com.digitalvidhyalaya.common.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
-import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedBy;
@@ -20,11 +20,11 @@ public abstract class AuditableBaseEntity extends BaseEntity {
 
     @CreatedDate
     @Column(nullable = false, updatable = false)
-    private OffsetDateTime createdAt;
+    private LocalDateTime createdAt;
 
     @LastModifiedDate
     @Column(nullable = false)
-    private OffsetDateTime updatedAt;
+    private LocalDateTime updatedAt;
 
     @CreatedBy
     @Column(updatable = false)

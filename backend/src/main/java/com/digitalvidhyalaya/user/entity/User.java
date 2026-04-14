@@ -8,7 +8,7 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
-import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -43,5 +43,5 @@ public class User extends SoftDeletableEntity {
     private UserStatus status;
 
     @Column(name = "last_login_at")
-    private OffsetDateTime lastLoginAt;
+    private LocalDateTime lastLoginAt;
 }

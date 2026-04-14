@@ -12,7 +12,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
-import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -47,7 +47,7 @@ public class UserSchoolRole extends AuditableBaseEntity {
     private RecordStatus status;
 
     @Column(name = "assigned_at", nullable = false)
-    private OffsetDateTime assignedAt;
+    private LocalDateTime assignedAt;
 
     @Column(name = "assigned_by", length = 100)
     private String assignedBy;

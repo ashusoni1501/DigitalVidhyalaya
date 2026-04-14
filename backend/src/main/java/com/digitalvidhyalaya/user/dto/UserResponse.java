@@ -2,7 +2,7 @@ package com.digitalvidhyalaya.user.dto;
 
 import com.digitalvidhyalaya.common.enums.RoleCode;
 import com.digitalvidhyalaya.common.enums.UserStatus;
-import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 public record UserResponse(
@@ -14,8 +14,8 @@ public record UserResponse(
         String phone,
         UserStatus status,
         Set<RoleCode> roles,
-        OffsetDateTime lastLoginAt,
-        OffsetDateTime createdAt,
-        OffsetDateTime updatedAt
+        LocalDateTime lastLoginAt,
+        LocalDateTime createdAt,
+        LocalDateTime updatedAt
 ) {
 }

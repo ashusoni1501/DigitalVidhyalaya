@@ -14,7 +14,7 @@ import com.digitalvidhyalaya.user.entity.User;
 import com.digitalvidhyalaya.user.entity.UserSchoolRole;
 import com.digitalvidhyalaya.user.repository.UserRepository;
 import com.digitalvidhyalaya.user.repository.UserSchoolRoleRepository;
-import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.stream.Collectors;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -84,7 +84,7 @@ public class AuthService {
 
         validateSchoolAccess(school, roles);
 
-        user.setLastLoginAt(OffsetDateTime.now());
+        user.setLastLoginAt(LocalDateTime.now());
         userRepository.save(user);
 
         boolean readOnlyAccess = school.getStatus() == SchoolStatus.SUSPENDED;
