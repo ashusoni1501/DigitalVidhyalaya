@@ -8,9 +8,16 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 public class SecurityConfig {
+
+    private final PlatformAdminKeyFilter platformAdminKeyFilter;
+
+    public SecurityConfig(PlatformAdminKeyFilter platformAdminKeyFilter) {
+        this.platformAdminKeyFilter = platformAdminKeyFilter;
+    }
 
     /**
      * This keeps the application stateless from day one. Auth currently exposes an explicit
@@ -27,6 +34,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/auth/**").permitAll()
                         .anyRequest().permitAll()
                 )
+                .addFilterBefore(platformAdminKeyFilter, UsernamePasswordAuthenticationFilter.class)
                 .httpBasic(httpBasic -> httpBasic.disable())
                 .formLogin(form -> form.disable());
 

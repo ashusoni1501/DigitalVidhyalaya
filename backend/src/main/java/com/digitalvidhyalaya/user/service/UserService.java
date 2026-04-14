@@ -53,6 +53,10 @@ public class UserService {
             throw new IllegalArgumentException("Username already exists");
         }
 
+        if (request.roles().contains(RoleCode.SUPER_ADMIN)) {
+            throw new IllegalArgumentException("SUPER_ADMIN cannot be assigned through school user creation");
+        }
+
         School school = findSchool(request.schoolId());
 
         User user = new User();

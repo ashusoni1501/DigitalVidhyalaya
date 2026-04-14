@@ -57,11 +57,23 @@ Base URL:
 http://localhost:8080
 ```
 
+Management endpoints currently require this header until token-based auth is added:
+
+```text
+X-Platform-Admin-Key: dv-local-admin-key
+```
+
 ## 3. Postman flow
 
 ### Create school
 
 `POST /api/v1/tenants/schools`
+
+Header:
+
+```text
+X-Platform-Admin-Key: dv-local-admin-key
+```
 
 ```json
 {
@@ -85,6 +97,12 @@ Copy the generated `schoolId` from the response.
 
 `PUT /api/v1/tenants/schools/{schoolId}/settings`
 
+Header:
+
+```text
+X-Platform-Admin-Key: dv-local-admin-key
+```
+
 Example:
 
 ```json
@@ -102,6 +120,12 @@ Example:
 ### Create admin user
 
 `POST /api/v1/users`
+
+Header:
+
+```text
+X-Platform-Admin-Key: dv-local-admin-key
+```
 
 ```json
 {
@@ -124,6 +148,12 @@ You can also create:
 ### List users by school
 
 `GET /api/v1/users?schoolId={schoolId}`
+
+Header:
+
+```text
+X-Platform-Admin-Key: dv-local-admin-key
+```
 
 ### Login
 

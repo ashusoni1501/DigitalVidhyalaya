@@ -20,6 +20,8 @@ import org.springframework.test.web.servlet.MvcResult;
 @AutoConfigureMockMvc
 class FlowIntegrationTest {
 
+    private static final String PLATFORM_ADMIN_KEY = "test-admin-key";
+
     @Autowired
     private MockMvc mockMvc;
 
@@ -29,6 +31,7 @@ class FlowIntegrationTest {
     @Test
     void shouldCreateSchoolConfigureSettingsCreateUserAndLogin() throws Exception {
         MvcResult schoolResult = mockMvc.perform(post("/api/v1/tenants/schools")
+                        .header("X-Platform-Admin-Key", PLATFORM_ADMIN_KEY)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
@@ -54,6 +57,7 @@ class FlowIntegrationTest {
         String schoolId = schoolJson.path("data").path("schoolId").asText();
 
         mockMvc.perform(put("/api/v1/tenants/schools/{schoolId}/settings", schoolId)
+                        .header("X-Platform-Admin-Key", PLATFORM_ADMIN_KEY)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
@@ -71,6 +75,7 @@ class FlowIntegrationTest {
                 .andExpect(jsonPath("$.data.receiptPrefix").value("RCPT"));
 
         MvcResult userResult = mockMvc.perform(post("/api/v1/users")
+                        .header("X-Platform-Admin-Key", PLATFORM_ADMIN_KEY)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
@@ -92,6 +97,7 @@ class FlowIntegrationTest {
         long userId = userJson.path("data").path("id").asLong();
 
         mockMvc.perform(get("/api/v1/users")
+                        .header("X-Platform-Admin-Key", PLATFORM_ADMIN_KEY)
                         .param("schoolId", schoolId))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.data[0].id").value(userId))

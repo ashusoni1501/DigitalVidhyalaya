@@ -57,8 +57,12 @@ public class AuthService {
     }
 
     public AuthenticatedUser authenticate(LoginRequest request) {
-        School school = schoolRepository.findBySchoolIdAndDeletedFalse(request.schoolId().trim())
+        School school = schoolRepository.findBySchoolId(request.schoolId().trim())
                 .orElseThrow(() -> new ResourceNotFoundException("School not found for schoolId: " + request.schoolId()));
+
+        if (school.isDeleted()) {
+            throw new IllegalArgumentException("This school record is deleted and login is not allowed");
+        }
 
         User user = userRepository.findByUsernameAndDeletedFalse(request.username().trim())
                 .orElseThrow(() -> new IllegalArgumentException("Invalid credentials"));

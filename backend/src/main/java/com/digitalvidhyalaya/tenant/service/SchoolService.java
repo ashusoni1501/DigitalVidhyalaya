@@ -59,7 +59,6 @@ public class SchoolService {
     public SchoolResponse deactivateSchool(String schoolId) {
         School school = findSchoolBySchoolId(schoolId);
         school.setStatus(SchoolStatus.DEACTIVATED);
-        school.setDeleted(true);
         return toResponse(schoolRepository.save(school));
     }
 
